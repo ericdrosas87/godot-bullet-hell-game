@@ -1,0 +1,251 @@
+[gd_scene load_steps=10 format=3 uid="uid://by7of741bj1xx"]
+
+[ext_resource type="Script" path="res://survivors_game.gd" id="1_51y02"]
+[ext_resource type="PackedScene" uid="uid://b7py7rvodfc6q" path="res://player.tscn" id="1_omp45"]
+[ext_resource type="Texture2D" uid="uid://chybiaka4ad7u" path="res://grass/grass.jpg" id="2_3a7dq"]
+[ext_resource type="PackedScene" uid="uid://ba26d6w6ho32v" path="res://pine_tree.tscn" id="2_moo1l"]
+[ext_resource type="Shader" path="res://survivors_game.gdshader" id="2_ynur2"]
+[ext_resource type="Script" path="res://level_number.gd" id="5_j6jju"]
+[ext_resource type="Script" path="res://kill_count_number.gd" id="6_13w6e"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bnfqg"]
+shader = ExtResource("2_ynur2")
+shader_parameter/scroll_offset = Vector2(0, 0)
+shader_parameter/texture_size = Vector2(1920, 1920)
+
+[sub_resource type="Curve2D" id="Curve2D_4r714"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -223, -33, 0, 0, 0, 0, -232, 340, 0, 0, 0, 0, -241, 1222, 0, 0, 0, 0, -223, -33, 0, 0, 0, 0, 54, -22, 0, 0, 0, 0, 359, -34, 0, 0, 0, 0, 665, -25, 0, 0, 0, 0, 778, -31, 0, 0, 0, 0, 1137, -37, 0, 0, 0, 0, 1728, -45, 0, 0, 0, 0, 1983, -25, 0, 0, 0, 0, 1988, 1239, 0, 0, 0, 0, -241, 1225)
+}
+point_count = 13
+
+[node name="Game" type="Node2D"]
+y_sort_enabled = true
+position = Vector2(112, -91)
+script = ExtResource("1_51y02")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -30
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 1920.0
+offset_bottom = 1081.0
+metadata/_edit_use_anchors_ = true
+
+[node name="GrassTile" type="TextureRect" parent="CanvasLayer"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_bnfqg")
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_3a7dq")
+stretch_mode = 1
+
+[node name="KillCountLabel" type="Label" parent="CanvasLayer"]
+offset_left = 24.0
+offset_top = 977.0
+offset_right = 221.0
+offset_bottom = 1032.0
+theme_override_colors/font_color = Color(0.427451, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Kill Count:"
+
+[node name="KillCountNumber" type="Label" parent="CanvasLayer/KillCountLabel"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 203.0
+offset_top = -3.0
+offset_right = 313.0
+offset_bottom = 58.0
+theme_override_colors/font_color = Color(0.709804, 0, 0, 1)
+theme_override_font_sizes/font_size = 44
+text = "0"
+script = ExtResource("6_13w6e")
+
+[node name="LevelLabel" type="Label" parent="CanvasLayer"]
+offset_left = 1702.0
+offset_top = 986.0
+offset_right = 1802.0
+offset_bottom = 1041.0
+theme_override_colors/font_color = Color(0, 0, 0.329412, 1)
+theme_override_font_sizes/font_size = 40
+text = "Level:"
+
+[node name="LevelNumber" type="Label" parent="CanvasLayer/LevelLabel"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 113.0
+offset_top = -4.0
+offset_right = 153.0
+offset_bottom = 59.0
+theme_override_colors/font_color = Color(0, 0, 0.576471, 1)
+theme_override_font_sizes/font_size = 45
+text = "0"
+script = ExtResource("5_j6jju")
+
+[node name="Player" parent="." instance=ExtResource("1_omp45")]
+position = Vector2(849, 631)
+
+[node name="Path2D" type="Path2D" parent="Player"]
+position = Vector2(-863, -568)
+curve = SubResource("Curve2D_4r714")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Player/Path2D"]
+unique_name_in_owner = true
+position = Vector2(-223, -33)
+rotation = 1.59492
+
+[node name="PineTree" parent="." instance=ExtResource("2_moo1l")]
+position = Vector2(324, 517)
+
+[node name="PineTree7" parent="." instance=ExtResource("2_moo1l")]
+position = Vector2(-97, 825)
+
+[node name="PineTree8" parent="." instance=ExtResource("2_moo1l")]
+position = Vector2(-968, 768)
+
+[node name="PineTree9" parent="." instance=ExtResource("2_moo1l")]
+position = Vector2(-897, 842)
+
+[node name="PineTree10" parent="." instance=ExtResource("2_moo1l")]
+position = Vector2(-1013, 890)
+
+[node name="PineTree11" parent="." instance=ExtResource("2_moo1l")]
+position = Vector2(637, -273)
+
+[node name="PineTree12" parent="." instance=ExtResource("2_moo1l")]
+position = Vector2(-69, -265)
+
+[node name="PineTree13" parent="." instance=ExtResource("2_moo1l")]
+position = Vector2(-156, -231)
+
+[node name="PineTree14" parent="." instance=ExtResource("2_moo1l")]
+position = Vector2(-934, -159)
+
+[node name="PineTree15" parent="." instance=ExtResource("2_moo1l")]
+position = Vector2(2113, -397)
+
+[node name="PineTree16" parent="." instance=ExtResource("2_moo1l")]
+position = Vector2(-1383, -563)
+
+[node name="PineTree17" parent="." instance=ExtResource("2_moo1l")]
+position = Vector2(2921, 505)
+
+[node name="PineTree18" parent="." instance=ExtResource("2_moo1l")]
+position = Vector2(2864, 569)
+
+[node name="PineTree19" parent="." instance=ExtResource("2_moo1l")]
+position = Vector2(3000, 614)
+
+[node name="PineTree20" parent="." instance=ExtResource("2_moo1l")]
+position = Vector2(2902, 795)
+
+[node name="PineTree21" parent="." instance=ExtResource("2_moo1l")]
+position = Vector2(2985, 871)
+
+[node name="PineTree22" parent="." instance=ExtResource("2_moo1l")]
+position = Vector2(2883, 980)
+
+[node name="PineTree23" parent="." instance=ExtResource("2_moo1l")]
+position = Vector2(2989, 1112)
+
+[node name="PineTree24" parent="." instance=ExtResource("2_moo1l")]
+position = Vector2(2679, 1293)
+
+[node name="PineTree25" parent="." instance=ExtResource("2_moo1l")]
+position = Vector2(3317, 946)
+
+[node name="PineTree26" parent="." instance=ExtResource("2_moo1l")]
+position = Vector2(3132, -153)
+
+[node name="PineTree27" parent="." instance=ExtResource("2_moo1l")]
+position = Vector2(3128, 9)
+
+[node name="PineTree28" parent="." instance=ExtResource("2_moo1l")]
+position = Vector2(2086, 613)
+
+[node name="PineTree29" parent="." instance=ExtResource("2_moo1l")]
+position = Vector2(1097, 1395)
+
+[node name="PineTree30" parent="." instance=ExtResource("2_moo1l")]
+position = Vector2(1173, 1520)
+
+[node name="PineTree31" parent="." instance=ExtResource("2_moo1l")]
+position = Vector2(444, 1577)
+
+[node name="PineTree32" parent="." instance=ExtResource("2_moo1l")]
+position = Vector2(319, 1641)
+
+[node name="PineTree33" parent="." instance=ExtResource("2_moo1l")]
+position = Vector2(-568, 1815)
+
+[node name="PineTree34" parent="." instance=ExtResource("2_moo1l")]
+position = Vector2(-568, 1815)
+
+[node name="PineTree35" parent="." instance=ExtResource("2_moo1l")]
+position = Vector2(1156, 2984)
+
+[node name="PineTree36" parent="." instance=ExtResource("2_moo1l")]
+position = Vector2(3253, 2601)
+
+[node name="PineTree37" parent="." instance=ExtResource("2_moo1l")]
+position = Vector2(2810, 2742)
+
+[node name="PineTree38" parent="." instance=ExtResource("2_moo1l")]
+position = Vector2(5138, 746)
+
+[node name="PineTree39" parent="." instance=ExtResource("2_moo1l")]
+position = Vector2(2286, -1734)
+
+[node name="PineTree40" parent="." instance=ExtResource("2_moo1l")]
+position = Vector2(-657, -1684)
+
+[node name="PineTree41" parent="." instance=ExtResource("2_moo1l")]
+position = Vector2(-3419, 281)
+
+[node name="PineTree42" parent="." instance=ExtResource("2_moo1l")]
+position = Vector2(-1927, 1753)
+
+[node name="PineTree2" parent="." instance=ExtResource("2_moo1l")]
+position = Vector2(1324, 725)
+
+[node name="PineTree3" parent="." instance=ExtResource("2_moo1l")]
+position = Vector2(1381, 240)
+
+[node name="PineTree4" parent="." instance=ExtResource("2_moo1l")]
+position = Vector2(1320, 304)
+
+[node name="PineTree5" parent="." instance=ExtResource("2_moo1l")]
+position = Vector2(1371, 802)
+
+[node name="PineTree6" parent="." instance=ExtResource("2_moo1l")]
+position = Vector2(1279, 849)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.317
+autostart = true
+
+[node name="GameOver" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="GameOver"]
+offset_right = 1935.0
+offset_bottom = 1091.0
+color = Color(0, 0, 0, 0.65098)
+
+[node name="Label" type="Label" parent="GameOver/ColorRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 48.098
+anchor_bottom = 27.065
+offset_left = 589.0
+offset_top = 189.0
+offset_right = 1403.0
+offset_bottom = 394.0
+theme_override_font_sizes/font_size = 150
+text = "Game Over"
+
+[connection signal="health_depleted" from="Player" to="." method="_on_player_health_depleted"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
