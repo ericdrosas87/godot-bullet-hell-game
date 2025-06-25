@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://by7of741bj1xx"]
+[gd_scene load_steps=14 format=3 uid="uid://by7of741bj1xx"]
 
 [ext_resource type="Script" path="res://survivors_game.gd" id="1_51y02"]
 [ext_resource type="PackedScene" uid="uid://b7py7rvodfc6q" path="res://player.tscn" id="1_omp45"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dftkbqwsfd68r" path="res://pistol/projectile.png" id="6_v5kms"]
 [ext_resource type="Texture2D" uid="uid://cd7jb4f701uhc" path="res://characters/icons/health-icon.png" id="7_ft6vx"]
 [ext_resource type="Texture2D" uid="uid://ctngn77dij248" path="res://characters/icons/start-of-protection-icon.png" id="8_rpbs6"]
+[ext_resource type="Script" path="res://level_up_menu.gd" id="9_ntjg1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bnfqg"]
 shader = ExtResource("2_ynur2")
@@ -91,20 +92,20 @@ script = ExtResource("5_j6jju")
 title = "Level Up!"
 initial_position = 1
 size = Vector2i(206, 200)
-hide_on_item_selection = false
 item_count = 4
 item_0/text = "Level Up Selection!"
-item_0/id = 3
 item_0/disabled = true
 item_0/separator = true
 item_1/text = "Extra Bullet"
 item_1/icon = ExtResource("6_v5kms")
+item_1/id = 1
 item_2/text = "Extra Health"
 item_2/icon = ExtResource("7_ft6vx")
-item_2/id = 1
+item_2/id = 2
 item_3/text = "Star of Protection"
 item_3/icon = ExtResource("8_rpbs6")
-item_3/id = 2
+item_3/id = 3
+script = ExtResource("9_ntjg1")
 
 [node name="Player" parent="." instance=ExtResource("1_omp45")]
 position = Vector2(849, 631)
@@ -269,5 +270,6 @@ offset_bottom = 394.0
 theme_override_font_sizes/font_size = 150
 text = "Game Over"
 
+[connection signal="id_pressed" from="CanvasLayer/LevelUpMenu" to="CanvasLayer/LevelUpMenu" method="_on_id_pressed"]
 [connection signal="health_depleted" from="Player" to="." method="_on_player_health_depleted"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

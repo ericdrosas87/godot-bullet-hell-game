@@ -1,12 +1,15 @@
 extends Node2D
 
 
+
+@onready var levelUpMenu := get_node("../CanvasLayer/LevelUpMenu")
 #func _ready():
 	#spawn_mob()
 	#spawn_mob()
 	#spawn_mob()
 	#spawn_mob()
 	#spawn_mob()
+
 
 func spawn_mob():
 	var new_mob = preload("res://mob.tscn").instantiate()

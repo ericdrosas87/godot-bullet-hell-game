@@ -2,6 +2,8 @@ extends Area2D
 
 @onready var levelNumber  = get_node("/root/Game/CanvasLayer/LevelLabel/LevelNumber")
 
+var bulletCount = 1;
+
 func _physics_process(delta: float) -> void:
 	var enemies_in_range = get_overlapping_bodies()
 	if enemies_in_range.size() > 0:
@@ -20,7 +22,8 @@ func _physics_process(delta: float) -> void:
 				self.scale.y *= -1;
 		
 func shoot():
-	for i in levelNumber.current_level + 1:
+	#for i in levelNumber.current_level + 1:
+	for i in bulletCount:
 		const BULLET = preload("res://bullet.tscn")
 		var new_bullet = BULLET.instantiate()
 		var variance = 0
